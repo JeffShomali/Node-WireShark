@@ -1,8 +1,9 @@
 const request = require('request');
 
- getPublicIp = () => {
+
+ const getPublicIP = () => {
     let exec = require('child_process').execSync;
-    let cmd = "dig +short myip.opendns.com @resolver1.opendns.com";
+    let cmd = "dig +short myip.opendns.com @resolver1.opendns.com"; 
     let options = {
       encoding: 'utf8'
     };
@@ -10,16 +11,29 @@ const request = require('request');
     return exec(cmd, options);
  }
 
- var ip = getPublicIp();
-//  console.log(ip);
+ var ip = getPublicIP();
 
+const showMyPublicIPInfo = (ip, callback) => {
+    request({
+        url: `http://ip-api.com/json/${ip}`,
+        json: true
+         }, (error, response, body) => {
+            if (!error && response.statusCode === 200) {
+                // callback(`Is is ${body.currently.temperature} in Concord Ca.`.bold.yellow);
+                callback(undefined, {
+                   body: body
+                });
+            } else {
+                // console.log('Unable to fetch the weather'.bold.red);
+                callback('Unable to fetch the weather')
+            }
+    
+      });
+} 
 
-url = `http://ip-api.com/json/${ip}`;
+showMyPublicIPInfo();
 
-
-request(url, function (error, response, body) {
-  console.log('error:', error); // Print the error if one occurred 
-  console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received 
-  console.log('body:', body); // Print the HTML for the Google homepage. 
-});
-
+// function (error, response, body) {
+//     console.log('error:', error); 
+//     console.log('statusCode:', response && response.statusCode); 
+//     console.log('body:', body); 
