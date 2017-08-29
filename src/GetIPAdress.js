@@ -13,27 +13,25 @@ const request = require('request');
 
  var ip = getPublicIP();
 
-const showMyPublicIPInfo = (ip, callback) => {
+const showMyPublicIPInfo = (_ip) => {
     request({
-        url: `http://ip-api.com/json/${ip}`,
-        json: true
+        url: `http://ip-api.com/json/${_ip}`,
          }, (error, response, body) => {
             if (!error && response.statusCode === 200) {
-                // callback(`Is is ${body.currently.temperature} in Concord Ca.`.bold.yellow);
-                callback(undefined, {
-                   body: body
-                });
+               console.log(body.as);
             } else {
-                // console.log('Unable to fetch the weather'.bold.red);
-                callback('Unable to fetch the weather')
+                console.log('Unable to fetch the weather')
             }
-    
       });
 } 
 
-showMyPublicIPInfo();
+showMyPublicIPInfo(ip);
+
 
 // function (error, response, body) {
 //     console.log('error:', error); 
 //     console.log('statusCode:', response && response.statusCode); 
 //     console.log('body:', body); 
+
+
+module.exports.showMyPublicIPInfo = showMyPublicIPInfo;
