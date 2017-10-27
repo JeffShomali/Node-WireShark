@@ -1,7 +1,6 @@
 const _ = require("lodash");
 const yargs = require("yargs");
 
-//Imports modules
 const ip = require("./GetIPAddress.js");
 
 const argv = yargs.command("whatIsMyIP", "Display IP Address", {}).help().argv;
