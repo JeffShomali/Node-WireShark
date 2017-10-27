@@ -18,7 +18,7 @@
     "url": "git+https://github.com/JeffShomali/Node-WireShark.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Jeff Shomali <info@jeffshomali.com> <jeffshomali.com>",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/JeffShomali/Node-WireShark/issues"

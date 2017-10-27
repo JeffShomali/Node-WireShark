@@ -1,20 +1,14 @@
-const _ = require('lodash'); 
-const yargs = require('yargs'); 
+const _ = require("lodash");
+const yargs = require("yargs");
 
-//------------- Get terminal arguments
-const argv = yargs.command('whatIsMyIP', 'Display IP Address', {}).help().argv;
+//Imports modules
+const ip = require("./GetIPAddress.js");
 
-var command = argv._[0] 
-   
-if (command == 'whatIsMyIP') {
-    var note = notes.addNote(argv.title, argv.body);
-    if (note) {
-        console.log('Note created.');
-        notes.logNote(note);
+const argv = yargs.command("whatIsMyIP", "Display IP Address", {}).help().argv;
+var command = argv._[0];
 
-    } else {
-        console.log('Note title taken.');
-    }
+if (command == "whatIsMyIP") {
+  console.log(command);
 } else {
-    console.log("Command Not recognize");
+  console.log("Command Not Recognize");
 }
