@@ -1,3 +1,7 @@
+#!/usr/bin/env node
+
+"use strict";
+
 const request = require("request");
 const axios = require("axios");
 
@@ -15,11 +19,11 @@ function getIP() {
 async function getGeoIPInformation() {
   try {
     const ip = await getIP();
+
     axios
       .get(`http://ip-api.com/json/${ip}`)
       .then(response => {
-        console.log(`IP ${ip}`);
-        console.log(response.data);
+        console.log(`IP:  ${ip}`, response.data);
       })
       .catch(error => {
         console.log(error);
@@ -27,6 +31,7 @@ async function getGeoIPInformation() {
   } catch (e) {
     console.error(e);
   }
+  return results;
 }
 
-module.exports = getGeoIPInformation();
+module.exports.getGeoIPInformation = getGeoIPInformation;
