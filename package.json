@@ -1,6 +1,6 @@
 {
   "name": "node-wireshark",
-  "version": "1.1.2",
+  "version": "1.1.3",
   "description":
     "Simple network tools for developer and It technician  built in NodeJS",
   "main": "index.js",
